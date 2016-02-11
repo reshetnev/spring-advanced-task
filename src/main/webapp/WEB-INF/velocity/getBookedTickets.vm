@@ -1,0 +1,11 @@
+<html>
+	<head><title>Cinema</title></head>
+	<body>
+		<h2>Tickets:</h2>
+		<ul>
+			#foreach($ticket in $tickets)
+				<li> ${ticket.id}/${ticket.eventId}/${ticket.userId}/${ticket.seat}/${ticket.isPurchased}</li>
+			#end
+		</ul>
+	</body>
+</html>
