@@ -1,11 +1,6 @@
 <html>
 	<head><title>Cinema</title></head>
 	<body>
-		<h2>Users:</h2>
-		<ul>
-			#foreach($user in $users)
-				<li> ${user.id}/${user.name}/${user.email}/${user.birthDay}</li>
-			#end
-		</ul>
+		<h1>Welcom to Home Page Cinema Web Application!!!</h1>
 	</body>
 </html>

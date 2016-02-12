@@ -10,7 +10,7 @@
             http://www.springframework.org/schema/mvc
             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!--mvc:view-controller path="/" view-name="home"/-->
+    <mvc:view-controller path="/" view-name="home"/>
 
     <!-- Turn @Controller into actual web controllers-->
     <mvc:annotation-driven />
@@ -21,15 +21,21 @@
     <!-- Support for @Controller -->
     <context:component-scan base-package="com.epam.reshetnev.spring.advanced.controller"></context:component-scan>
 
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+      <property name="order" value="1" />
+
+      <property name="defaultViews">
+        <list>
+          <!-- PDF View -->
+          <bean class="com.epam.reshetnev.spring.advanced.view.pdf.PdfViewResolver"/>
+        </list>
+      </property>
+
+    </bean>
+
     <bean id="velocityConfigurer"
         class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="WEB-INF/velocity/"/>
-        <property name="velocityProperties">
-            <props>
-                <prop key="directive.foreach.counter.name">loopCounter</prop>
-                <prop key="directive.foreach.counter.initial.value">0</prop>
-            </props>
-        </property>
     </bean>
 
     <bean id="viewResolver"
