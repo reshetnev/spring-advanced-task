@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.epam.reshetnev.spring.core.domain.Ticket;
 import com.epam.reshetnev.spring.core.domain.User;
 import com.epam.reshetnev.spring.core.service.EventService;
 import com.epam.reshetnev.spring.core.service.UserService;

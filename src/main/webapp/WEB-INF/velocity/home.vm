@@ -2,5 +2,14 @@
 	<head><title>Cinema</title></head>
 	<body>
 		<h1>Welcom to Home Page Cinema Web Application!!!</h1>
+		
+      <form class="form-horizontal" enctype="multipart/form-data" action="/spring-advanced-task/upload" method="post">
+          <div class="form-actions">
+            <input type="file" name="file"/>
+            <hr>
+            <button class="btn btn-primary" type="submit">Upload</button>
+          </div>
+      </form>
+		
 	</body>
 </html>

@@ -22,4 +22,6 @@ public interface UserService {
     public List<User> getAll();
 
     public void update(User user);
+
+    public void saveAll(List<User> users);
 }

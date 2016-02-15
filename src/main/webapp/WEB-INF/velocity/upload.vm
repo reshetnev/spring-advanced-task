@@ -1,0 +1,9 @@
+<html>
+	<head><title>Cinema</title></head>
+	<body>
+		<h1>File successfully uploaded!!!</h1>
+		<h2>Data string</h2>
+		<hr>
+		<p>${data}</p>
+	</body>
+</html>

@@ -94,4 +94,9 @@ public class UserServiceImpl implements UserService {
         userDao.update(user);
     }
 
+    @Override
+    public void saveAll(List<User> users) {
+        users.forEach(user -> save(user));
+    }
+
 }

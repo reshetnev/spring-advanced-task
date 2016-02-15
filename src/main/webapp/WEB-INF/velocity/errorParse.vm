@@ -1,0 +1,8 @@
+<html>
+	<head><title>Cinema</title></head>
+	<body>
+		<h1>Error parsing file!!!!!</h1>
+		<hr>
+		<p>${message}</p>
+	</body>
+</html>
