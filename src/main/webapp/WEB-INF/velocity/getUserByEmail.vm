@@ -1,9 +1,9 @@
 <html>
 	<head><title>Cinema</title></head>
 	<body>
-		<h2>Get User by Email:</h2>
+		<h2>Get User by Email(Id):</h2>
 		<ul>
-				<li> ${user.id}/${user.name}/${user.email}/${user.birthDay}</li>
+			<li>${user}</li>
 		</ul>
 	</body>
 </html>

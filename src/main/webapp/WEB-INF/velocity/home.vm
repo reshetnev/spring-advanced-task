@@ -10,6 +10,23 @@
             <button class="btn btn-primary" type="submit">Upload</button>
           </div>
       </form>
-		
+		<div>
+			<a href="http://localhost:8080/spring-advanced-task/users">http://localhost:8080/spring-advanced-task/users</a>
+			<br>
+			<a href="http://localhost:8080/spring-advanced-task/users/2">http://localhost:8080/spring-advanced-task/users/2</a>
+			<br>
+			<a href="http://localhost:8080/spring-advanced-task/users/2/tickets">http://localhost:8080/spring-advanced-task/users/2/tickets</a>
+			<br>
+			<a href="http://localhost:8080/spring-advanced-task/users/2/tickets.pdf">http://localhost:8080/spring-advanced-task/users/2/tickets.pdf</a>
+			<br>
+			<a href="http://localhost:8080/spring-advanced-task/events">http://localhost:8080/spring-advanced-task/events</a>
+			<br>
+			<a href="http://localhost:8080/spring-advanced-task/events/1">http://localhost:8080/spring-advanced-task/events/1</a>
+			<br>
+			<a href="http://localhost:8080/spring-advanced-task/events/1/tickets">http://localhost:8080/spring-advanced-task/events/1/tickets</a>
+			<br>
+			<a href="http://localhost:8080/spring-advanced-task/events/1/tickets.pdf">http://localhost:8080/spring-advanced-task/events/1/tickets.pdf</a>
+			<br>
+		</div>
 	</body>
 </html>

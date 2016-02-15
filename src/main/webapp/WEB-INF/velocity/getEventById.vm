@@ -1,11 +1,9 @@
 <html>
 	<head><title>Cinema</title></head>
 	<body>
-		<h2>Users:</h2>
+		<h2>Get Event by Id:</h2>
 		<ul>
-			#foreach($user in $users)
-				<li>${user}</li>
-			#end
+			<li>${event}</li>
 		</ul>
 	</body>
 </html>

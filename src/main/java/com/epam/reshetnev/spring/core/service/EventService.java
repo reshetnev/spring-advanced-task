@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.epam.reshetnev.spring.core.domain.Event;
+import com.epam.reshetnev.spring.core.domain.Ticket;
+import com.epam.reshetnev.spring.core.domain.User;
 
 public interface EventService {
 
@@ -24,4 +26,8 @@ public interface EventService {
     public void assignAuditorium(Event event, String auditorium, String date, String time);
 
     public void update(Event event);
+
+    public void saveAll(List<Event> events);
+
+    public List<Ticket> getBookedTickets(Event event);
 }

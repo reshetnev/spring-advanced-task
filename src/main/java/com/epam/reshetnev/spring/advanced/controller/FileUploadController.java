@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epam.reshetnev.spring.advanced.parser.UserListParser;
 import com.epam.reshetnev.spring.core.domain.User;
 import com.epam.reshetnev.spring.core.service.UserService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.type.TypeFactory;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Controller
 public class FileUploadController {
@@ -35,14 +32,7 @@ public class FileUploadController {
             model.addObject("data", data);
             model.setViewName("upload");
             try {
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.registerModule(new JavaTimeModule());
-                mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-                List<User> users = mapper.readValue(data,
-                        TypeFactory.defaultInstance()
-                        .constructCollectionType(
-                                List.class,
-                                User.class));
+                List<User> users = UserListParser.getUserList(data);
                 userService.saveAll(users);
             } catch(Exception e) {
                 model.addObject("message", e.getMessage());

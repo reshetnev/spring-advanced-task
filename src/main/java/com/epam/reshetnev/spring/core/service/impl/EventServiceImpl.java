@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 
 import com.epam.reshetnev.spring.core.dao.EventDao;
 import com.epam.reshetnev.spring.core.domain.Event;
+import com.epam.reshetnev.spring.core.domain.Ticket;
 import com.epam.reshetnev.spring.core.service.EventService;
+import com.epam.reshetnev.spring.core.service.TicketService;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -22,6 +25,9 @@ public class EventServiceImpl implements EventService {
 
     @Autowired
     private EventDao eventDao;
+
+    @Autowired
+    private TicketService ticketService;
 
     @Override
     public void save(Event event) {
@@ -83,6 +89,29 @@ public class EventServiceImpl implements EventService {
     public void update(Event event) {
         Preconditions.checkNotNull(event.getId(), "Event id should not be null");
         eventDao.update(event);
+    }
+
+    @Override
+    public void saveAll(List<Event> events) {
+        events.forEach(event -> save(event));
+    }
+
+    @Override
+    public List<Ticket> getBookedTickets(Event event) {
+        List<Ticket> tickets = Lists.newArrayList();
+
+        Integer eventId = event.getId();
+
+        for (Ticket ticket : ticketService.getAll()) {
+            Integer ticketId = ticket.getUserId();
+            if ((ticketId != null)
+                && (eventId != null)
+                && (ticket.getUserId().equals(eventId))) {
+                tickets.add(ticket);
+            }
+        }
+
+        return tickets;
     }
 
 }
