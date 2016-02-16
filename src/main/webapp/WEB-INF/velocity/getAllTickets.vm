@@ -1,7 +1,7 @@
 <html>
 	<head><title>Cinema</title></head>
 	<body>
-		<h2>Get Booked Tickets:</h2>
+		<h2>Get All Tickets:</h2>
 		<ul>
 			#foreach($ticket in $tickets)
 				<li>${ticket}</li>

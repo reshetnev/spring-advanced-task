@@ -45,7 +45,7 @@ public class EventsController {
         model.setViewName("getEventByName");
         return model;
     }
-    
+
     @RequestMapping(value = "/events/{eventId}/tickets", method = RequestMethod.GET)
     public ModelAndView getBookedTickets(@PathVariable String eventId) {
         ModelAndView model = new ModelAndView();
