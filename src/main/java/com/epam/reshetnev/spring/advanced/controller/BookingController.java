@@ -45,7 +45,7 @@ public class BookingController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/book/events/{eventId}/allTickets", method = RequestMethod.GET)
+    @RequestMapping(value = "/tickets/events/{eventId}", method = RequestMethod.GET)
     public ModelAndView getAllTickets(@PathVariable String eventId) {
         ModelAndView model = new ModelAndView();
         Event event = eventService.getById(Integer.parseInt(eventId));
@@ -55,7 +55,7 @@ public class BookingController {
         return model;
     }
 
-    @RequestMapping(value = "/book/events/{eventId}/allTickets", method = RequestMethod.GET,
+    @RequestMapping(value = "/tickets/events/{eventId}", method = RequestMethod.GET,
             headers="accept=application/pdf")
     public ModelAndView getAllTicketsPdf(@PathVariable String eventId) {
         ModelAndView model = new ModelAndView();
