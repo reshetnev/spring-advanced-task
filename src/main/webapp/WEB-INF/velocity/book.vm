@@ -1,0 +1,13 @@
+<html>
+	<head><title>Cinema</title></head>
+	<body>
+		<form action="/spring-advanced-task/tickets/book" method="post">
+		  <h2>Event Name:</h2> 
+		  #springFormInput("bookForm.name" "")<br>
+		  <h2>Seat:</h2>
+		  #springFormInput("bookForm.seat" "")<br>
+		  <hr>
+		  <input type="submit" value="Book Ticket"/>
+		</form>
+	</body>
+</html>

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,11 +35,22 @@ public class BookingController {
     @Autowired
     private TicketService ticketService;
 
+    @RequestMapping(value = "/tickets/book", method = RequestMethod.GET)
+    public ModelAndView bookTicket() {
+        ModelAndView model = new ModelAndView();
+        BookForm bookForm = new BookForm();
+        model.addObject("bookForm", bookForm);
+        model.setViewName("book");
+        return model;
+    }
+    
     @RequestMapping(value = "/tickets/book", method = RequestMethod.POST)
-    public String bookTicket(HttpServletRequest request, BookForm bookForm, BindingResult result) {
-        String login = request.getUserPrincipal().getName();
-        User user = userService.getByEmail(login);
-        Ticket ticket = new Ticket();
+    public String bookTicketProcessing(HttpServletRequest request, BookForm bookForm) {
+//        String login = request.getUserPrincipal().getName();
+        User user = userService.getByEmail("ivan@gmail.com");
+        Event event = eventService.getByName(bookForm.getName());
+        Integer seat = bookForm.getSeat();
+        Ticket ticket = ticketService.getByEventAndSeat(event, seat);
         bookingService.bookTicket(user, ticket);
         return "redirect:/";
     }

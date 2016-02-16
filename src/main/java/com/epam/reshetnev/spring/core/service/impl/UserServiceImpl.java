@@ -14,7 +14,6 @@ import com.epam.reshetnev.spring.core.domain.User;
 import com.epam.reshetnev.spring.core.service.TicketService;
 import com.epam.reshetnev.spring.core.service.UserService;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -67,20 +66,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Ticket> getBookedTickets(User user) {
-        List<Ticket> tickets = Lists.newArrayList();
-
-        Integer userId = user.getId();
-
-        for (Ticket ticket : ticketService.getAll()) {
-            Integer ticketId = ticket.getUserId();
-            if ((ticketId != null)
-                && (userId != null)
-                && (ticket.getUserId().equals(userId))) {
-                tickets.add(ticket);
-            }
-        }
-
-        return tickets;
+        return ticketService.getAll()
+                .stream()
+                .filter(t -> (t.getUserId() != null
+                                && t.getUserId().equals(user.getId())
+                                && t.getIsPurchased()))
+                .collect(Collectors.toList());
     }
 
     @Override

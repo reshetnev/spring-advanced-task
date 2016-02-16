@@ -84,7 +84,8 @@ public class BookingServiceImpl implements BookingService {
     public List<Ticket> getTicketsForEvent(Event event) {
         return ticketService.getAll()
                 .stream()
-                .filter(t -> t.getEventId().equals(event.getId()))
+                .filter(t -> (t.getEventId() != null
+                                && t.getEventId().equals(event.getId())))
                 .collect(Collectors.toList());
     }
 

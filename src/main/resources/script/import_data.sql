@@ -41,3 +41,4 @@ INSERT INTO tickets VALUES (null, 2, 2, 24, true);
 INSERT INTO tickets VALUES (null, 2, 2, 25, true);
 INSERT INTO tickets VALUES (null, 2, 2, 26, true);
 INSERT INTO tickets VALUES (null, 2, 2, 27, true);
+INSERT INTO tickets VALUES (null, null, null, 28, false);

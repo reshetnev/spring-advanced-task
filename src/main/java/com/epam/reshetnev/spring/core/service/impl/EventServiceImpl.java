@@ -16,7 +16,6 @@ import com.epam.reshetnev.spring.core.domain.Ticket;
 import com.epam.reshetnev.spring.core.service.EventService;
 import com.epam.reshetnev.spring.core.service.TicketService;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -98,20 +97,12 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Ticket> getBookedTickets(Event event) {
-        List<Ticket> tickets = Lists.newArrayList();
-
-        Integer eventId = event.getId();
-
-        for (Ticket ticket : ticketService.getAll()) {
-            Integer ticketId = ticket.getUserId();
-            if ((ticketId != null)
-                && (eventId != null)
-                && (ticket.getUserId().equals(eventId))) {
-                tickets.add(ticket);
-            }
-        }
-
-        return tickets;
+        return ticketService.getAll()
+                .stream()
+                .filter(t -> (t.getEventId() != null
+                                && t.getEventId().equals(event.getId())
+                                && t.getIsPurchased()))
+                .collect(Collectors.toList());
     }
 
 }
