@@ -5,7 +5,10 @@
 		
       <form class="form-horizontal" enctype="multipart/form-data" action="/spring-advanced-task/upload" method="post">
           <div class="form-actions">
-            <input type="file" name="file"/>
+            <h2>Select users.json file</h2>
+            <input type="file" name="users"/>
+            <h2>Select events.json file</h2>
+            <input type="file" name="events"/>
             <hr>
             <button class="btn btn-primary" type="submit">Upload</button>
           </div>

@@ -35,6 +35,15 @@ public class Event {
         this.auditorium = auditorium;
     }
 
+    public Event(String name, LocalDate date, LocalTime time, Double basePrice, Rating rating, String auditorium) {
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.basePrice = basePrice;
+        this.rating = rating;
+        this.auditorium = auditorium;
+    }
+
     public Integer getId() {
         return id;
     }
