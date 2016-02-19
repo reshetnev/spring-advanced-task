@@ -20,7 +20,7 @@ public class EventsController {
     private EventService eventService;
 
     @RequestMapping(value = "/events", method = RequestMethod.GET)
-    public ModelAndView getAllUsers() {
+    public ModelAndView getAllEvents() {
         ModelAndView model = new ModelAndView();
         List<Event> events = eventService.getAll();
         model.addObject("events", events);
@@ -29,7 +29,7 @@ public class EventsController {
     }
 
     @RequestMapping(value = "/events/{eventId}", method = RequestMethod.GET)
-    public ModelAndView getUserById(@PathVariable String eventId) {
+    public ModelAndView getEventById(@PathVariable String eventId) {
         ModelAndView model = new ModelAndView();
         Event event = eventService.getById(Integer.parseInt(eventId));
         model.addObject("event", event);
@@ -38,7 +38,7 @@ public class EventsController {
     }
 
     @RequestMapping(value = "/events/event/{name}", method = RequestMethod.GET)
-    public ModelAndView getUsersByName(@PathVariable String name) {
+    public ModelAndView getEventByName(@PathVariable String name) {
         ModelAndView model = new ModelAndView();
         Event event = eventService.getByName(name);
         model.addObject("event", event);
