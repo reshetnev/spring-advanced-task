@@ -2,11 +2,15 @@
 	{
 		"name":"valentin",
 		"email":"valentin@mail.ru",
-		"birthDay":"1980-02-14"
+		"birthDay":"1980-02-14",
+		"password":"4",
+		"roles":"REGISTERED_USER"
 	},
 	{
 		"name":"aleks",
 		"email":"aleks@mail.ru",
-		"birthDay":"1979-03-31"
+		"birthDay":"1979-03-31",
+		"password":"5",
+		"roles":"REGISTERED_USER,BOOKING_MANAGER"
 	}
 ]

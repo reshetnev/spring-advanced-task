@@ -19,7 +19,7 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <!-- Support for @Controller -->
-    <context:component-scan base-package="com.epam.reshetnev.spring.advanced.controller"></context:component-scan>
+    <context:component-scan base-package="com.epam.reshetnev.spring.advanced.controller"/>
 
     <bean id="multipartResolver"
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

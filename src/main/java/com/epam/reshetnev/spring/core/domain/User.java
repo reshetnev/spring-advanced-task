@@ -12,20 +12,28 @@ public class User {
 
     private LocalDate birthDay;
 
+    private String password;
+
+    private String roles;
+
     public User() {
     }
 
-    public User(Integer id, String name, String email, LocalDate birthDay) {
+    public User(Integer id, String name, String email, LocalDate birthDay, String password, String roles) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.birthDay = birthDay;
+        this.password = password;
+        this.roles = roles;
     }
 
-    public User(String name, String email, LocalDate birthDay) {
+    public User(String name, String email, LocalDate birthDay, String password, String roles) {
         this.name = name;
         this.email = email;
         this.birthDay = birthDay;
+        this.password = password;
+        this.roles = roles;
     }
 
     public Integer getId() {
@@ -60,9 +68,26 @@ public class User {
         this.birthDay = birthDay;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
-        return "User [id=" + id + ", name=" + name + ", email=" + email + ", birthDay=" + birthDay + "]";
+        return "User [id=" + id + ", name=" + name + ", email=" + email + ", birthDay=" + birthDay + ", password="
+                + password + ", roles=" + roles + "]";
     }
 
     @Override
@@ -73,6 +98,8 @@ public class User {
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((roles == null) ? 0 : roles.hashCode());
         return result;
     }
 
@@ -104,6 +131,16 @@ public class User {
             if (other.name != null)
                 return false;
         } else if (!name.equals(other.name))
+            return false;
+        if (password == null) {
+            if (other.password != null)
+                return false;
+        } else if (!password.equals(other.password))
+            return false;
+        if (roles == null) {
+            if (other.roles != null)
+                return false;
+        } else if (!roles.equals(other.roles))
             return false;
         return true;
     }

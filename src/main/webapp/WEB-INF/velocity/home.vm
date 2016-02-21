@@ -37,5 +37,6 @@
 			<a href="http://localhost:8080/spring-advanced-task/tickets/book">http://localhost:8080/spring-advanced-task/tickets/book</a>
 			<br>
 		</div>
+		<a href="http://localhost:8080/spring-advanced-task/logout"><h1>LOGOUT</h1></a>
 	</body>
 </html>
