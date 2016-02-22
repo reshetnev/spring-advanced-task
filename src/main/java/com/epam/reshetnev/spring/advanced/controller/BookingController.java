@@ -46,8 +46,8 @@ public class BookingController {
     
     @RequestMapping(value = "/tickets/book", method = RequestMethod.POST)
     public String bookTicketProcessing(HttpServletRequest request, BookForm bookForm) {
-//        String login = request.getUserPrincipal().getName();
-        User user = userService.getByEmail("ivan@gmail.com");
+        String email = request.getUserPrincipal().getName();
+        User user = userService.getByEmail(email);
         Event event = eventService.getByName(bookForm.getName());
         Integer seat = bookForm.getSeat();
         Ticket ticket = ticketService.getByEventAndSeat(event, seat);
