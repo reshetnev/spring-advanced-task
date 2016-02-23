@@ -1,6 +1,6 @@
-INSERT INTO users VALUES (null, 'Kim', 'kim1@gmail.com', '1981-10-25', '1', 'REGISTERED_USER');
-INSERT INTO users VALUES (null, 'Kim', 'kim2@gmail.com', '1982-10-31', '2', 'REGISTERED_USER,BOOKING_MANAGER');
-INSERT INTO users VALUES (null, 'Ivan', 'ivan@gmail.com', '1983-12-01', '3', 'REGISTERED_USER');
+INSERT INTO users VALUES (null, 'Kim', 'kim1@gmail.com', '1981-10-25', '3b9d74ed07d5279e528a84ef16d49a93', 'REGISTERED_USER');
+INSERT INTO users VALUES (null, 'Kim', 'kim2@gmail.com', '1982-10-31', '29baf47a0a6cbe6c35f02c9c19edeb98', 'REGISTERED_USER,BOOKING_MANAGER');
+INSERT INTO users VALUES (null, 'Ivan', 'ivan@gmail.com', '1983-12-01', '0689b94163d4bac6fd0fdab88a407e8b', 'REGISTERED_USER');
 INSERT INTO events VALUES (null, 'Minions', '2015-10-25', '15:00:00', 200, 'HIGH', 'Big');
 INSERT INTO events VALUES (null, '007Spectr', '2015-10-30', '21:00:00', 100, 'MID', 'Mid');
 INSERT INTO tickets VALUES (null, 1, null, 1, false);
