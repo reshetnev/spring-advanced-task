@@ -3,7 +3,7 @@
 	<body>
 		<h1>Welcom to Home Page Cinema Web Application!!!</h1>
 		
-      <form class="form-horizontal" enctype="multipart/form-data" action="/spring-advanced-task/upload" method="post">
+      <form class="form-horizontal" enctype="multipart/form-data" action="${rc.contextPath}/upload" method="post">
           <div class="form-actions">
             <h2>Select users.json file</h2>
             <input type="file" name="users"/>
@@ -14,28 +14,29 @@
           </div>
       </form>
 		<div>
-			<a href="http://localhost:8080/spring-advanced-task/users">http://localhost:8080/spring-advanced-task/users</a>
+			<a href="${rc.contextPath}/users">GET:/users</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/users/2">http://localhost:8080/spring-advanced-task/users/2</a>
+			<a href="${rc.contextPath}/users/2">GET:/users/2</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/users/2/tickets">http://localhost:8080/spring-advanced-task/users/2/tickets</a>
+			<a href="${rc.contextPath}/users/2/tickets">GET:/users/2/tickets</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/users/2/tickets.pdf">http://localhost:8080/spring-advanced-task/users/2/tickets.pdf</a>
+			<a href="${rc.contextPath}/users/2/tickets.pdf">GET:/users/2/tickets.pdf</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/events">http://localhost:8080/spring-advanced-task/events</a>
+			<a href="${rc.contextPath}/events">GET:/events</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/events/1">http://localhost:8080/spring-advanced-task/events/1</a>
+			<a href="${rc.contextPath}/events/1">GET:/events/1</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/events/1/tickets">http://localhost:8080/spring-advanced-task/events/1/tickets</a>
+			<a href="${rc.contextPath}/events/1/tickets">GET:/events/1/tickets</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/events/1/tickets.pdf">http://localhost:8080/spring-advanced-task/events/1/tickets.pdf</a>
+			<a href="${rc.contextPath}/events/1/tickets.pdf">GET:/events/1/tickets.pdf</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/tickets/events/1">http://localhost:8080/spring-advanced-task/tickets/events/1</a>
+			<a href="${rc.contextPath}/tickets/events/1">GET:/tickets/events/1</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/tickets/events/1.pdf">http://localhost:8080/spring-advanced-task/tickets/events/1.pdf</a>
+			<a href="${rc.contextPath}/tickets/events/1.pdf">GET:/tickets/events/1.pdf</a>
 			<br>
-			<a href="http://localhost:8080/spring-advanced-task/tickets/book">http://localhost:8080/spring-advanced-task/tickets/book</a>
+			<a href="${rc.contextPath}/tickets/book">POST:/tickets/book</a>
 			<br>
 		</div>
+		<a href="${rc.contextPath}/logout"><h1>LOGOUT</h1></a>
 	</body>
 </html>

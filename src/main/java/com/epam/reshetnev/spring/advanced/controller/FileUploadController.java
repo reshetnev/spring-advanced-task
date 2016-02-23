@@ -19,6 +19,7 @@ public class FileUploadController {
     @Autowired
     private FileService fileService;
 
+    @SuppressWarnings("finally")
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public ModelAndView handleFormUpload(MultipartHttpServletRequest req) {
 

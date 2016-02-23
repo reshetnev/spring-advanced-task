@@ -26,4 +26,9 @@ public class LoginController {
 
         return model;
     }
+
+    @RequestMapping(value = "/forbidden")
+    public String handleForbiddenPage() {
+        return "forbidden";
+    }
 }

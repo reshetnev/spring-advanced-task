@@ -9,7 +9,7 @@
 		</div>
 		<div>
 			<h1>Login</h1>
-			<form method="post" action="/spring-advanced-task/login">
+			<form method="post" action="${rc.contextPath}/login">
 					<table>
 						<tr>
 							<th><label for="email">Email</label></th>
@@ -22,8 +22,8 @@
 						<tr>
 							<th></th>
 							<td>
-								<input name="_spring_security_remember_me" type="checkbox"/>
-								<label for="remember_me">Remember me</label>
+								<input name="remember-me" type="checkbox"/>
+								<label for="remember-me">Remember me</label>
 							</td>
 						</tr>
 						<tr>
@@ -33,6 +33,25 @@
 					</table>
 			</form>
 			</script>
+		</div>
+		<hr>
+		<div>
+			<h2>Email: kim1@gmail.com Password: 1</h2>
+		</div>
+		<div>
+			<h2>Email: kim2@gmail.com Password: 2 (BOOKING_MANAGER)</h2>
+		</div>
+		<div>
+			<h2>Email: ivan@gmail.com Password: 3</h2>
+		</div>
+		<div>
+			<h1>After uploading users.json:</h1>
+		</div>
+		<div>
+			<h2>Email: valentin@mail.ru Password: 4</h2>
+		</div>
+		<div>
+			<h2>Email: aleks@mail.ru Password: 5 (BOOKING_MANAGER)</h2>
 		</div>
 	</body>
 </html>
