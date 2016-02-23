@@ -118,7 +118,7 @@
     </dependencies>
 
   <build>
-    <finalName>spring-advanced-task</finalName>
+    <finalName>cinema</finalName>
 
     <plugins>
       <plugin>
