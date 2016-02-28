@@ -89,12 +89,17 @@ public class UserAccountServiceImpl implements UserAccountService {
         Double bill = prices.stream().mapToDouble(Double::doubleValue).sum();
         UserAccount account = getByUser(user);
         Double balance = account.getMoney() - bill;
-        account.setMoney(balance);
-        update(account);
-        log.info("Balance for User: " + user.toString() +
-                " after booking ticket: " + ticket.toString() +
-                " for event: " + event.toString() +
-                " is: " + account.getMoney());
+        if (balance >= 0) { 
+            account.setMoney(balance);
+            update(account);
+            log.info("Balance for User: " + user.toString() +
+                    " after booking ticket: " + ticket.toString() +
+                    " for event: " + event.toString() +
+                    " is: " + account.getMoney());
+        } else {
+            log.info("Money is not enough!");
+            throw new RuntimeException();
+        }
     }
 
 }

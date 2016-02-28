@@ -18,6 +18,7 @@ import com.epam.reshetnev.spring.core.service.AuditoriumService;
 import com.epam.reshetnev.spring.core.service.BookingService;
 import com.epam.reshetnev.spring.core.service.DiscountService;
 import com.epam.reshetnev.spring.core.service.TicketService;
+import com.epam.reshetnev.spring.core.service.UserAccountService;
 import com.google.common.collect.Lists;
 
 @Service
@@ -37,6 +38,9 @@ public class BookingServiceImpl implements BookingService {
 
     @Autowired
     private TicketService ticketService;
+
+    @Autowired
+    private UserAccountService userAccountService;
 
     @Override
     public List<Double> getTicketPrices(Event event, LocalDate date, List<Integer> seats, User user) {
@@ -75,7 +79,12 @@ public class BookingServiceImpl implements BookingService {
             if (user.getId() != null) {
                 ticket.setUserId(user.getId());
             }
-            ticketService.update(ticket);
+            try {
+                userAccountService.bookTicket(user, ticket);
+                ticketService.update(ticket);
+            } catch(RuntimeException rex) {
+                log.info("Rollback transaction.");
+            }
         } else {
             log.info(ticket + " is booked");
         }

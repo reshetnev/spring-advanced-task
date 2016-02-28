@@ -18,7 +18,6 @@ import com.epam.reshetnev.spring.core.domain.form.BookForm;
 import com.epam.reshetnev.spring.core.service.BookingService;
 import com.epam.reshetnev.spring.core.service.EventService;
 import com.epam.reshetnev.spring.core.service.TicketService;
-import com.epam.reshetnev.spring.core.service.UserAccountService;
 import com.epam.reshetnev.spring.core.service.UserService;
 
 @Controller
@@ -35,9 +34,6 @@ public class BookingController {
 
     @Autowired
     private TicketService ticketService;
-
-    @Autowired
-    private UserAccountService userAccountService;
 
     @RequestMapping(value = "/tickets/book", method = RequestMethod.GET)
     public ModelAndView bookTicket() {
@@ -56,7 +52,6 @@ public class BookingController {
         Integer seat = bookForm.getSeat();
         Ticket ticket = ticketService.getByEventAndSeat(event, seat);
         bookingService.bookTicket(user, ticket);
-        userAccountService.bookTicket(user, ticket);
         return "redirect:/";
     }
 
