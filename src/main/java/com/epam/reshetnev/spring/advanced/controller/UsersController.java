@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.reshetnev.spring.core.domain.Ticket;
 import com.epam.reshetnev.spring.core.domain.User;
+import com.epam.reshetnev.spring.core.domain.UserAccount;
+import com.epam.reshetnev.spring.core.service.UserAccountService;
 import com.epam.reshetnev.spring.core.service.UserService;
 
 @Controller
@@ -18,6 +20,9 @@ public class UsersController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserAccountService userAccountService;
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ModelAndView getAllUsers() {
@@ -64,6 +69,15 @@ public class UsersController {
         List<Ticket> tickets = userService.getBookedTickets(user);
         model.addObject("tickets", tickets);
         model.setViewName("getBookedTickets");
+        return model;
+    }
+
+    @RequestMapping(value = "/accounts", method = RequestMethod.GET)
+    public ModelAndView getAllAccounts() {
+        ModelAndView model = new ModelAndView();
+        List<UserAccount> accounts = userAccountService.getAll();
+        model.addObject("accounts", accounts);
+        model.setViewName("accounts");
         return model;
     }
 }

@@ -16,6 +16,8 @@
           </div>
       </form>
 		<div>
+			<a href="${rc.contextPath}/accounts">GET:/accounts</a>
+			<br>
 			<a href="${rc.contextPath}/users">GET:/users</a>
 			<br>
 			<a href="${rc.contextPath}/users/2">GET:/users/2</a>

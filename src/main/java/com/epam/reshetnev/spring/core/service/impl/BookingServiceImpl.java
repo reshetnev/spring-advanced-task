@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.reshetnev.spring.core.domain.Auditorium;
 import com.epam.reshetnev.spring.core.domain.Event;
@@ -20,6 +21,7 @@ import com.epam.reshetnev.spring.core.service.TicketService;
 import com.google.common.collect.Lists;
 
 @Service
+@Transactional
 public class BookingServiceImpl implements BookingService {
 
     private static final Logger log = Logger.getLogger(BookingServiceImpl.class);

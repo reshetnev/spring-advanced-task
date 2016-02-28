@@ -1,0 +1,11 @@
+<html>
+	<head><title>Cinema</title></head>
+	<body>
+		<h2>User Accounts:</h2>
+		<ul>
+			#foreach($account in $accounts)
+				<li>${account}</li>
+			#end
+		</ul>
+	</body>
+</html>

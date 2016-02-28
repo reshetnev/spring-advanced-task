@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.reshetnev.spring.core.discount.DiscountStrategy;
 import com.epam.reshetnev.spring.core.domain.Event;
@@ -13,6 +14,7 @@ import com.epam.reshetnev.spring.core.domain.User;
 import com.epam.reshetnev.spring.core.service.DiscountService;
 
 @Service
+@Transactional
 public class DiscountServiceImpl implements DiscountService {
 
     private static final Logger log = Logger.getLogger(DiscountServiceImpl.class);

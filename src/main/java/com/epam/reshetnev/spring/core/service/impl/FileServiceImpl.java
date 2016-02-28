@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.epam.reshetnev.spring.advanced.parser.AccountListParser;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.google.common.collect.Lists;
 
 @Service
+@Transactional
 public class FileServiceImpl implements FileService {
 
     @Autowired

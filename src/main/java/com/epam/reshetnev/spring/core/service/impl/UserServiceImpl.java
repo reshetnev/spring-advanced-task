@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.reshetnev.spring.core.dao.UserDao;
 import com.epam.reshetnev.spring.core.domain.Ticket;
@@ -16,6 +17,7 @@ import com.epam.reshetnev.spring.core.service.UserService;
 import com.google.common.base.Preconditions;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private static final Logger log = Logger.getLogger(UserServiceImpl.class);
