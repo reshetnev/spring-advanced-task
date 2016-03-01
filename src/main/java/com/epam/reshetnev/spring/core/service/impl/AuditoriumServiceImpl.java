@@ -6,11 +6,13 @@ import java.util.Optional;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.reshetnev.spring.core.domain.Auditorium;
 import com.epam.reshetnev.spring.core.service.AuditoriumService;
 
 @Service
+@Transactional
 public class AuditoriumServiceImpl implements AuditoriumService {
 
     private static final Logger log = Logger.getLogger(AuditoriumServiceImpl.class);

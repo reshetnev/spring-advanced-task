@@ -11,7 +11,7 @@ public interface BookingService {
 
     public List<Double> getTicketPrices(Event event, LocalDate date, List<Integer> seats, User user);
 
-    public void bookTicket(User user, Ticket ticket);
+    public void bookTicket(User user, Ticket ticket) throws Exception;
 
     public List<Ticket> getTicketsForEvent(Event event);
 

@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.reshetnev.spring.core.domain.Auditorium;
 import com.epam.reshetnev.spring.core.domain.Event;
@@ -17,9 +18,11 @@ import com.epam.reshetnev.spring.core.service.AuditoriumService;
 import com.epam.reshetnev.spring.core.service.BookingService;
 import com.epam.reshetnev.spring.core.service.DiscountService;
 import com.epam.reshetnev.spring.core.service.TicketService;
+import com.epam.reshetnev.spring.core.service.UserAccountService;
 import com.google.common.collect.Lists;
 
 @Service
+@Transactional
 public class BookingServiceImpl implements BookingService {
 
     private static final Logger log = Logger.getLogger(BookingServiceImpl.class);
@@ -35,6 +38,9 @@ public class BookingServiceImpl implements BookingService {
 
     @Autowired
     private TicketService ticketService;
+
+    @Autowired
+    private UserAccountService userAccountService;
 
     @Override
     public List<Double> getTicketPrices(Event event, LocalDate date, List<Integer> seats, User user) {
@@ -66,16 +72,29 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void bookTicket(User user, Ticket ticket) {
+    @Transactional(rollbackFor=Exception.class)
+    public void bookTicket(User user, Ticket ticket) throws Exception {
 
-        if (!ticket.getIsPurchased()) {
-            ticket.setIsPurchased(true);
-            if (user.getId() != null) {
-                ticket.setUserId(user.getId());
+        if (ticket != null) {
+            if (!ticket.getIsPurchased()) {
+                ticket.setIsPurchased(true);
+                if (user.getId() != null) {
+                    ticket.setUserId(user.getId());
+                }
+                try {
+                    ticketService.update(ticket);
+                    userAccountService.bookTicket(user, ticket);
+                } catch(Exception up) {
+                    log.info("Rollback transaction.");
+                    throw up;
+                }
+            } else {
+                log.info(ticket + " is booked");
+                throw new Exception(ticket + " is booked");
             }
-            ticketService.update(ticket);
         } else {
-            log.info(ticket + " is booked");
+            log.info("Ticket is not exist");
+            throw new Exception("Ticket is not exist");
         }
 
     }

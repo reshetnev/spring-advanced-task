@@ -7,6 +7,8 @@
           <div class="form-actions">
             <h2>Select users.json file</h2>
             <input type="file" name="users"/>
+            <h2>Select accounts.json file</h2>
+            <input type="file" name="accounts"/>
             <h2>Select events.json file</h2>
             <input type="file" name="events"/>
             <hr>
@@ -14,6 +16,8 @@
           </div>
       </form>
 		<div>
+			<a href="${rc.contextPath}/accounts">GET:/accounts</a>
+			<br>
 			<a href="${rc.contextPath}/users">GET:/users</a>
 			<br>
 			<a href="${rc.contextPath}/users/2">GET:/users/2</a>
