@@ -36,6 +36,11 @@
 		</div>
 		<hr>
 		<div>
+			<h1>In order to test ROLLBACK Transaction for example login with Email: kim1@gmail.com Password: 1, go to /tickets/book<br>
+			fill form with Event Name: Minions Seat: 1. You will see page with exception because price of ticket<br>
+			with Birthday discount for this user is 190, but user has 189 (See link /accounts). You can try other cases.</h1>
+		</div>
+		<div>
 			<h2>Email: kim1@gmail.com Password: 1</h2>
 		</div>
 		<div>

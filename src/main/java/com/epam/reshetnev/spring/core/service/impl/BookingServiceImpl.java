@@ -72,21 +72,29 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void bookTicket(User user, Ticket ticket) {
+    @Transactional(rollbackFor=Exception.class)
+    public void bookTicket(User user, Ticket ticket) throws Exception {
 
-        if (!ticket.getIsPurchased()) {
-            ticket.setIsPurchased(true);
-            if (user.getId() != null) {
-                ticket.setUserId(user.getId());
-            }
-            try {
-                userAccountService.bookTicket(user, ticket);
-                ticketService.update(ticket);
-            } catch(RuntimeException rex) {
-                log.info("Rollback transaction.");
+        if (ticket != null) {
+            if (!ticket.getIsPurchased()) {
+                ticket.setIsPurchased(true);
+                if (user.getId() != null) {
+                    ticket.setUserId(user.getId());
+                }
+                try {
+                    ticketService.update(ticket);
+                    userAccountService.bookTicket(user, ticket);
+                } catch(Exception up) {
+                    log.info("Rollback transaction.");
+                    throw up;
+                }
+            } else {
+                log.info(ticket + " is booked");
+                throw new Exception(ticket + " is booked");
             }
         } else {
-            log.info(ticket + " is booked");
+            log.info("Ticket is not exist");
+            throw new Exception("Ticket is not exist");
         }
 
     }

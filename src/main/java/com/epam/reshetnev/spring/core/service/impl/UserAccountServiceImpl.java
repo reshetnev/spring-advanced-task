@@ -81,7 +81,8 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     @Override
-    public void bookTicket(User user, Ticket ticket) {
+    @Transactional
+    public void bookTicket(User user, Ticket ticket) throws Exception {
         Event event = eventService.getById(ticket.getEventId());
         LocalDate date = event.getDate();
         List<Integer> seats = Lists.newArrayList(ticket.getSeat());
@@ -89,16 +90,18 @@ public class UserAccountServiceImpl implements UserAccountService {
         Double bill = prices.stream().mapToDouble(Double::doubleValue).sum();
         UserAccount account = getByUser(user);
         Double balance = account.getMoney() - bill;
-        if (balance >= 0) { 
-            account.setMoney(balance);
-            update(account);
+        account.setMoney(balance);
+        update(account);
+        if (balance >= 0) {
+
             log.info("Balance for User: " + user.toString() +
                     " after booking ticket: " + ticket.toString() +
                     " for event: " + event.toString() +
                     " is: " + account.getMoney());
         } else {
+
             log.info("Money is not enough!");
-            throw new RuntimeException();
+            throw new Exception("Money is not enough! Rollback transaction.");
         }
     }
 

@@ -22,5 +22,5 @@ public interface UserAccountService {
 
     public UserAccount getByUser(User user);
 
-    public void bookTicket(User user, Ticket ticket);
+    public void bookTicket(User user, Ticket ticket) throws Exception;
 }
