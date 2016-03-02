@@ -93,8 +93,8 @@ public class BookingServiceImpl implements BookingService {
                 throw new Exception(ticket + " is booked");
             }
         } else {
-            log.info("Ticket is not exist");
-            throw new Exception("Ticket is not exist");
+            log.info("Ticket does not exist");
+            throw new Exception("Ticket does not exist");
         }
 
     }

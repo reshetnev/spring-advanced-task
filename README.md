@@ -1,11 +1,15 @@
-# transactions-task
+# soap-ws
 
 ##Task description:
 
-1. Add new entity to the application - UserAccount, it should store the amount of prepaid money user has in the system, which should be used during booking procedure. Add methods for refilling the account to the BookingFacade class. Add DAO and service objects for new entity. Add ticketPrice field to Event entity.
+1. Mark User and Event entites with appropriate JAXB annotations to enable JAXB binding.
 
-2. Update ticket booking methods to check and withdraw money from user account according to the ticketPrice for particular event. 
+2. Based on annotated entity classes generate XML schema via schemagen tool. 
 
-3. Configure appropriate PlatformTransactionManager implementation in Spring application context. 
+3. Generate JAXB-derived service classes using xjc tool.
 
-4. Make ticket booking methods transactional using Spring declarative transactions management (either xml or annotation based config).
+4. Create SOAP based web-service endpoints to serve all User and Event related operations.
+
+5. Add Spring WS application context configuration.
+
+6. Implement test client for above mentioned endpoints via spring WebServiceTemplate.

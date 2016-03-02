@@ -3,20 +3,35 @@ package com.epam.reshetnev.spring.core.domain;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.epam.reshetnev.spring.advanced.parser.LocalDateAdapter;
+import com.epam.reshetnev.spring.advanced.parser.LocalTimeAdapter;
+import com.epam.reshetnev.spring.advanced.parser.RatingAdapter;
 import com.epam.reshetnev.spring.core.domain.enums.Rating;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Event {
 
+    @XmlAttribute
     private Integer id;
 
     private String name;
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate date;
 
+    @XmlJavaTypeAdapter(LocalTimeAdapter.class)
     private LocalTime time;
 
     private Double basePrice;
 
+    @XmlJavaTypeAdapter(RatingAdapter.class)
     private Rating rating;
 
     private String auditorium;

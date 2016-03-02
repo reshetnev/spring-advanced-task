@@ -2,14 +2,26 @@ package com.epam.reshetnev.spring.core.domain;
 
 import java.time.LocalDate;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.epam.reshetnev.spring.advanced.parser.LocalDateAdapter;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
 
+    @XmlAttribute
     private Integer id;
 
     private String name;
 
     private String email;
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate birthDay;
 
     private String password;
