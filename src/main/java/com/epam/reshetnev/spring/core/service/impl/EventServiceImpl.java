@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,7 @@ import com.google.common.base.Preconditions;
 
 @Service
 @Transactional
+@WebService
 public class EventServiceImpl implements EventService {
 
     private static final Logger log = Logger.getLogger(EventServiceImpl.class);
@@ -31,21 +35,25 @@ public class EventServiceImpl implements EventService {
     private TicketService ticketService;
 
     @Override
+    @WebMethod
     public void save(Event event) {
         eventDao.save(event);
     }
 
     @Override
+    @WebMethod
     public void delete(Event event) {
         eventDao.delete(event);
     }
 
     @Override
+    @WebMethod
     public Event getById(Integer id) {
         return eventDao.getById(id);
     }
 
     @Override
+    @WebMethod
     public Event getByName(String name) {
         Optional<Event> event = getAll()
                 .stream()
@@ -61,11 +69,13 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @WebMethod
     public List<Event> getAll() {
         return eventDao.getAll();
     }
 
     @Override
+    @WebMethod
     public List<Event> getAllForDateRange(LocalDate from, LocalDate to) {
         return getAll()
                 .stream()
@@ -75,11 +85,13 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @WebMethod
     public List<Event> getAllNextEvents(LocalDate to) {
         return getAllForDateRange(LocalDate.now(), to);
     }
 
     @Override
+    @WebMethod
     public void assignAuditorium(Event event, String auditorium, String date, String time) {
         event.setAuditorium(auditorium);
         event.setDate(LocalDate.parse(date));
@@ -87,17 +99,20 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @WebMethod
     public void update(Event event) {
         Preconditions.checkNotNull(event.getId(), "Event id should not be null");
         eventDao.update(event);
     }
 
     @Override
+    @WebMethod
     public void saveAll(List<Event> events) {
         events.forEach(event -> save(event));
     }
 
     @Override
+    @WebMethod
     public List<Ticket> getBookedTickets(Event event) {
         return ticketService.getAll()
                 .stream()

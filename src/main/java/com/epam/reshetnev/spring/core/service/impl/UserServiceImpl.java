@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,7 @@ import com.google.common.base.Preconditions;
 
 @Service
 @Transactional
+@WebService
 public class UserServiceImpl implements UserService {
 
     private static final Logger log = Logger.getLogger(UserServiceImpl.class);
@@ -29,21 +33,25 @@ public class UserServiceImpl implements UserService {
     private TicketService ticketService;
 
     @Override
+    @WebMethod
     public void save(User user) {
         userDao.save(user);
     }
 
     @Override
+    @WebMethod
     public void delete(User user) {
         userDao.delete(user);
     }
 
     @Override
+    @WebMethod
     public User getById(Integer id) {
         return userDao.getById(id);
     }
 
     @Override
+    @WebMethod
     public User getByEmail(String email) {
         Optional<User> user = getAll()
                 .stream()
@@ -59,6 +67,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @WebMethod
     public List<User> getAllByName(String name) {
         return getAll()
                 .stream()
@@ -67,6 +76,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @WebMethod
     public List<Ticket> getBookedTickets(User user) {
         return ticketService.getAll()
                 .stream()
@@ -77,17 +87,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @WebMethod
     public List<User> getAll() {
         return userDao.getAll();
     }
 
     @Override
+    @WebMethod
     public void update(User user) {
         Preconditions.checkNotNull(user.getId(), "User id should not be null");
         userDao.update(user);
     }
 
     @Override
+    @WebMethod
     public void saveAll(List<User> users) {
         users.forEach(user -> save(user));
     }
