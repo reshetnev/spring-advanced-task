@@ -184,7 +184,7 @@
   </binding>
   <service name="UserServiceImplService">
     <port name="UserServiceImplPort" binding="tns:UserServiceImplPortBinding">
-      <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+      <soap:address location="http://localhost:8080/cinema/"/>
     </port>
   </service>
 </definitions>

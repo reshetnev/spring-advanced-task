@@ -20,6 +20,7 @@
     <import resource="auditoriums.xml"/>
     <import resource="discounts.xml"/>
     <import resource="db.xml"/>
+    <import resource="service-ws-servlet.xml"/>
 
     <!-- Support for @Autowire -->
     <context:annotation-config/>
