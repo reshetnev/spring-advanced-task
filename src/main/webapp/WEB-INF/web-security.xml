@@ -13,8 +13,9 @@
     <http-basic/>
     <logout logout-url="/logout"/>
     <intercept-url pattern="/login" access="permitAll"/>
-    <intercept-url pattern="/xsd" access="permitAll"/>
     <intercept-url pattern="/ws" access="permitAll"/>
+    <intercept-url pattern="/ws/*.wsdl" access="permitAll"/>
+    <intercept-url pattern="/ws/*.xsd" access="permitAll"/>
     <intercept-url pattern="/events/*/tickets" access="hasRole('BOOKING_MANAGER')"/>
     <intercept-url pattern="/**" access="hasRole('REGISTERED_USER')"/>
     <access-denied-handler error-page="/forbidden"/>
