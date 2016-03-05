@@ -48,10 +48,12 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(User user) {
-        jdbcTemplate.update("UPDATE users SET name = ?, email = ?, birthDay = ? WHERE users.id = ?",
+        jdbcTemplate.update("UPDATE users SET name = ?, email = ?, birthDay = ?, password = ?, roles = ? WHERE users.id = ?",
                 user.getName(),
                 user.getEmail(),
                 user.getBirthDay().toString(),
+                user.getPassword(),
+                user.getRoles(),
                 user.getId());
     }
 

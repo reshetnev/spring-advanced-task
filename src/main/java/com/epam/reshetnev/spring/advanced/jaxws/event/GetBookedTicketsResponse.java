@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "getBookedTicketsResponse", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlRootElement(name = "getBookedTicketsResponse", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getBookedTicketsResponse", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlType(name = "getBookedTicketsResponse", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 public class GetBookedTicketsResponse {
 
     @XmlElement(name = "return", namespace = "")

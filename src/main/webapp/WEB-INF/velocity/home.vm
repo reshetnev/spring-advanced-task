@@ -15,6 +15,8 @@
             <button class="btn btn-primary" type="submit">Upload</button>
           </div>
       </form>
+      <hr>
+      <hr>
 		<div>
 			<a href="${rc.contextPath}/accounts">GET:/accounts</a>
 			<br>
@@ -41,6 +43,21 @@
 			<a href="${rc.contextPath}/tickets/book">POST:/tickets/book</a>
 			<br>
 		</div>
+		<hr>
+		<div>
+			<a href="${rc.contextPath}/ws/userServiceSoap.wsdl">
+				<h3>GET:/ws/userServiceSoap.wsdl</h3>
+			</a>
+			<br>
+			<a href="${rc.contextPath}/ws/UserServiceImplService.xsd">GET:/ws/UserServiceImplService.xsd</a>
+			<br>
+			<a href="${rc.contextPath}/ws/eventServiceSoap.wsdl">
+				<h3>GET:/ws/eventServiceSoap.wsdl</h3>
+			</a>
+			<br>
+			<a href="${rc.contextPath}/ws/EventServiceImplService.xsd">GET:/ws/EventServiceImplService.xsd</a>
+		</div>
+		<hr>
 		<a href="${rc.contextPath}/logout"><h1>LOGOUT</h1></a>
 	</body>
 </html>

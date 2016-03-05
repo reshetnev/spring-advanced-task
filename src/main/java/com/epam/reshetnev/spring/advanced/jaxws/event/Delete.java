@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "delete", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlRootElement(name = "delete", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "delete", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlType(name = "delete", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 public class Delete {
 
     @XmlElement(name = "arg0", namespace = "")

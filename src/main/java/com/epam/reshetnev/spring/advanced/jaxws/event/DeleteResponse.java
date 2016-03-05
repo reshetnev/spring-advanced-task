@@ -6,9 +6,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "deleteResponse", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlRootElement(name = "deleteResponse", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteResponse", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlType(name = "deleteResponse", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 public class DeleteResponse {
 
 

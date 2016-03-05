@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "assignAuditorium", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlRootElement(name = "assignAuditorium", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "assignAuditorium", namespace = "http://impl.service.core.spring.reshetnev.epam.com/", propOrder = {
+@XmlType(name = "assignAuditorium", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/", propOrder = {
     "arg0",
     "arg1",
     "arg2",

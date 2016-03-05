@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "getAllForDateRange", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlRootElement(name = "getAllForDateRange", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getAllForDateRange", namespace = "http://impl.service.core.spring.reshetnev.epam.com/", propOrder = {
+@XmlType(name = "getAllForDateRange", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/", propOrder = {
     "arg0",
     "arg1"
 })

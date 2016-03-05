@@ -13,9 +13,17 @@
     <http-basic/>
     <logout logout-url="/logout"/>
     <intercept-url pattern="/login" access="permitAll"/>
+
+    <!-- WS is opened access for check by SoapUI -->
     <intercept-url pattern="/ws" access="permitAll"/>
     <intercept-url pattern="/ws/*.wsdl" access="permitAll"/>
     <intercept-url pattern="/ws/*.xsd" access="permitAll"/>
+
+    <!-- WS is secured -->
+    <!--intercept-url pattern="/ws" access="hasRole('REGISTERED_USER')"/-->
+    <!--intercept-url pattern="/ws/*.wsdl" access="hasRole('REGISTERED_USER')"/-->
+    <!--intercept-url pattern="/ws/*.xsd" access="hasRole('REGISTERED_USER')"/-->
+
     <intercept-url pattern="/events/*/tickets" access="hasRole('BOOKING_MANAGER')"/>
     <intercept-url pattern="/**" access="hasRole('REGISTERED_USER')"/>
     <access-denied-handler error-page="/forbidden"/>

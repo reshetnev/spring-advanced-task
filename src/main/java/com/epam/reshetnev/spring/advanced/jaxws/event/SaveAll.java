@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "saveAll", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlRootElement(name = "saveAll", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "saveAll", namespace = "http://impl.service.core.spring.reshetnev.epam.com/")
+@XmlType(name = "saveAll", namespace = "http://event.impl.service.core.spring.reshetnev.epam.com/")
 public class SaveAll {
 
     @XmlElement(name = "arg0", namespace = "")
