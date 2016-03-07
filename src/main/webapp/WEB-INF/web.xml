@@ -8,6 +8,7 @@
     <param-name>contextConfigLocation</param-name>
             <param-value>
                 classpath:spring.xml,
+                /WEB-INF/ws-client.xml,
                 /WEB-INF/web-security.xml
             </param-value>
 </context-param>

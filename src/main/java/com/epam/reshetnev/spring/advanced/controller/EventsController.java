@@ -2,6 +2,7 @@ package com.epam.reshetnev.spring.advanced.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epam.reshetnev.spring.advanced.ws.client.EventServiceClient;
 import com.epam.reshetnev.spring.core.domain.Event;
 import com.epam.reshetnev.spring.core.domain.Ticket;
 import com.epam.reshetnev.spring.core.service.EventService;
@@ -16,8 +18,13 @@ import com.epam.reshetnev.spring.core.service.EventService;
 @Controller
 public class EventsController {
 
+    private static final Logger log = Logger.getLogger(EventsController.class);
+
     @Autowired
     private EventService eventService;
+
+    @Autowired
+    private EventServiceClient eventServiceClient;
 
     @RequestMapping(value = "/events", method = RequestMethod.GET)
     public ModelAndView getAllEvents() {
@@ -31,9 +38,15 @@ public class EventsController {
     @RequestMapping(value = "/events/{eventId}", method = RequestMethod.GET)
     public ModelAndView getEventById(@PathVariable String eventId) {
         ModelAndView model = new ModelAndView();
+        Integer id = Integer.parseInt(eventId);
         Event event = eventService.getById(Integer.parseInt(eventId));
         model.addObject("event", event);
         model.setViewName("getEventById");
+
+        log.info("Testing SOAP WS! Calling EventServiceClient.getById...");
+        Event result = eventServiceClient.getById(id);
+        log.info("Test SOAP WS has finished. WebServiceTemplate return result: " + result.toString());
+
         return model;
     }
 

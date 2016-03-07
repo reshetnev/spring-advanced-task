@@ -11,9 +11,9 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
   <sws:annotation-driven />
-  <context:component-scan base-package="com.epam.reshetnev.spring.advanced.endpoint"/>
-  <context:component-scan base-package="com.epam.reshetnev.spring.advanced.jaxws.event"/>
-  <context:component-scan base-package="com.epam.reshetnev.spring.advanced.jaxws.user"/>
+  <context:component-scan base-package="com.epam.reshetnev.spring.advanced.ws.endpoint"/>
+  <context:component-scan base-package="com.epam.reshetnev.spring.advanced.ws.event"/>
+  <context:component-scan base-package="com.epam.reshetnev.spring.advanced.ws.user"/>
 
     <sws:static-wsdl id="userServiceSoap" location="/WEB-INF/ws/UserServiceImplService.wsdl"/>
 
