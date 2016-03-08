@@ -45,17 +45,17 @@
 		</div>
 		<hr>
 		<div>
-			<a href="${rc.contextPath}/ws/userServiceSoap.wsdl">
-				<h3>GET:/ws/userServiceSoap.wsdl</h3>
+			<a href="http://localhost:8080/cinema/ws/userServiceSoap.wsdl">
+				<h3>http://localhost:8080/cinema/ws/userServiceSoap.wsdl</h3>
 			</a>
 			<br>
-			<a href="${rc.contextPath}/ws/UserServiceImplService.xsd">GET:/ws/UserServiceImplService.xsd</a>
+			<a href="http://localhost:8080/cinema/ws/UserServiceImplService.xsd">http://localhost:8080/cinema/ws/UserServiceImplService.xsd</a>
 			<br>
-			<a href="${rc.contextPath}/ws/eventServiceSoap.wsdl">
-				<h3>GET:/ws/eventServiceSoap.wsdl</h3>
+			<a href="http://localhost:8080/cinema/ws/eventServiceSoap.wsdl">
+				<h3>http://localhost:8080/cinema/ws/eventServiceSoap.wsdl</h3>
 			</a>
 			<br>
-			<a href="${rc.contextPath}/ws/EventServiceImplService.xsd">GET:/ws/EventServiceImplService.xsd</a>
+			<a href="http://localhost:8080/cinema/ws/EventServiceImplService.xsd">http://localhost:8080/cinema/ws/EventServiceImplService.xsd</a>
 		</div>
 		<hr>
 		<a href="${rc.contextPath}/logout"><h1>LOGOUT</h1></a>

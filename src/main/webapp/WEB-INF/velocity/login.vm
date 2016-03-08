@@ -36,17 +36,21 @@
 		</div>
 		<hr>
 		<div>
-			<a href="${rc.contextPath}/ws/userServiceSoap.wsdl">
-				<h2>GET:/ws/userServiceSoap.wsdl</h2>
+			<h1>In order to test SOAP WS Clients, for example, Logger was added to UsersController.getUserById and EventsController.getEventById</h1>
+		</div>
+		<hr>
+		<div>
+			<a href="http://localhost:8080/cinema/ws/userServiceSoap.wsdl">
+				<h2>http://localhost:8080/cinema/ws/userServiceSoap.wsdl</h2>
 			</a>
 			<br>
-			<a href="${rc.contextPath}/ws/UserServiceImplService.xsd">GET:/ws/UserServiceImplService.xsd</a>
+			<a href="http://localhost:8080/cinema/ws/UserServiceImplService.xsd">http://localhost:8080/cinema/ws/UserServiceImplService.xsd</a>
 			<br>
-			<a href="${rc.contextPath}/ws/eventServiceSoap.wsdl">
-				<h2>GET:/ws/eventServiceSoap.wsdl</h2>
+			<a href="http://localhost:8080/cinema/ws/eventServiceSoap.wsdl">
+				<h2>http://localhost:8080/cinema/ws/eventServiceSoap.wsdl</h2>
 			</a>
 			<br>
-			<a href="${rc.contextPath}/ws/EventServiceImplService.xsd">GET:/ws/EventServiceImplService.xsd</a>
+			<a href="http://localhost:8080/cinema/ws/EventServiceImplService.xsd">http://localhost:8080/cinema/ws/EventServiceImplService.xsd</a>
 		</div>
 		<hr>
 		<div>
