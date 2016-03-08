@@ -36,7 +36,8 @@
 		</div>
 		<hr>
 		<div>
-			<h1>In order to test SOAP WS Clients, for example, Logger was added to UsersController.getUserById and EventsController.getEventById</h1>
+			<h1>In order to test SOAP WS Clients, only for example, Logger was added to UsersController.getUserById and EventsController.getEventById.
+			You have to test SOAP WS for URI http://localhost:8080/cinema/ws (hardcoded)!</h1>
 		</div>
 		<hr>
 		<div>
