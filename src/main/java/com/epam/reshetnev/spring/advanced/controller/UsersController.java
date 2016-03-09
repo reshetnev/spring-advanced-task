@@ -61,8 +61,7 @@ public class UsersController {
         return model;
     }
 
-    @RequestMapping(value = "/users/{userId}/tickets", method = RequestMethod.GET,
-            headers="accept=application/pdf")
+    @RequestMapping(value = "/users/{userId}/tickets", method = RequestMethod.GET, headers="accept=application/pdf")
     public ModelAndView getBookedTicketsPdf(@PathVariable String userId) {
         ModelAndView model = new ModelAndView();
         User user = userService.getById(Integer.parseInt(userId));

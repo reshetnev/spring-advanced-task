@@ -14,11 +14,13 @@ import com.lowagie.text.Element;
 import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class PdfViewResolver extends AbstractPdfView {
+public class TicketPdfViewResolver extends AbstractPdfView {
 
     @Override
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter arg2, HttpServletRequest arg3,
             HttpServletResponse arg4) throws Exception {
+
+        Ticket ticket = (Ticket) model.get("ticket");
 
         @SuppressWarnings("unchecked")
         List<Ticket> tickets = (List<Ticket>) model.get("tickets");
@@ -26,10 +28,15 @@ public class PdfViewResolver extends AbstractPdfView {
         Table table = new Table(1);
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
-        table.addCell("Get Booked Tickets:");
 
-        for (Ticket ticket: tickets) {
+        if (ticket != null) {
+            table.addCell("Ticket:");
             table.addCell(ticket.toString());
+        } else if (tickets != null) {
+            table.addCell("Tickets:");
+            for (Ticket t: tickets) {
+                table.addCell(t.toString());
+            }
         }
 
         document.add(table);

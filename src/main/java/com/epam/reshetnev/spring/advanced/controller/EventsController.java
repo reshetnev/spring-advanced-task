@@ -56,8 +56,7 @@ public class EventsController {
         return model;
     }
 
-    @RequestMapping(value = "/events/{eventId}/tickets", method = RequestMethod.GET,
-            headers="accept=application/pdf")
+    @RequestMapping(value = "/events/{eventId}/tickets", method = RequestMethod.GET, headers="accept=application/pdf")
     public ModelAndView getBookedTicketsPdf(@PathVariable String eventId) {
         ModelAndView model = new ModelAndView();
         Event event = eventService.getById(Integer.parseInt(eventId));
