@@ -19,7 +19,7 @@ import com.epam.reshetnev.spring.core.domain.User;
 import com.epam.reshetnev.spring.core.service.UserService;
 
 @RestController
-public class UsersRestController {
+public class EventsRestController {
 
     @Autowired
     private UserService userService;
