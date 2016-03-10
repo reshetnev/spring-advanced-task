@@ -15,7 +15,7 @@
             <list>
                 <bean class="com.epam.reshetnev.spring.advanced.parser.ListTicketHttpMessageConverterImpl"/>
                 <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-                <!--bean class="org.springframework.messaging.support.converter.ByteArrayMessageConverter"/-->
+                <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
             </list>
         </property>
     </bean>

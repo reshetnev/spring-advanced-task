@@ -61,7 +61,7 @@
 			<br>
 			<a href="${rc.contextPath}/events/1/tickets.pdf">GET:/events/1/tickets.pdf</a>
 			<br>
-			<a href="${rc.contextPath}/tickets">GET:/tickets (TODO test RestTemplate)</a>
+			<a href="${rc.contextPath}/tickets">GET:/tickets (test PDF RestTemplate)</a>
 			<br>
 			<a href="${rc.contextPath}/tickets/3">GET:/tickets/3 (test PDF RestTemplate)</a>
 			<br>
@@ -69,7 +69,7 @@
 			<br>
 			<a href="${rc.contextPath}/tickets/events/1.pdf">GET:/tickets/events/1.pdf</a>
 			<br>
-			<a href="${rc.contextPath}/tickets/book">POST:/tickets/book (TODO test RestTemplate)</a>
+			<a href="${rc.contextPath}/tickets/book">POST:/tickets/book (test PDF RestTemplate)</a>
 			<br>
 		</div>
 		<hr>

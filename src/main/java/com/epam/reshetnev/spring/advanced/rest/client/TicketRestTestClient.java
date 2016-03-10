@@ -1,8 +1,7 @@
 package com.epam.reshetnev.spring.advanced.rest.client;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,35 +25,42 @@ public class TicketRestTestClient {
 
     private static final String URI = "http://localhost:8080/cinema";
 
-    public void getAllTickets() {
-        log.info("Testing getAllTickets API");
-
-        @SuppressWarnings("unchecked")
-        List<LinkedHashMap<String, Object>> tickets = restTemplate.getForObject(URI+"/tickets", List.class);
-
-        if(tickets!=null) {
-            for (LinkedHashMap<String, Object> map : tickets) {
-                log.info("Ticket : id=" + map.get("id") + ", name=" + map.get("name") + ", email=" + map.get("email")
-                        + ", birthDay=" + map.get("birthDay") + ", roles=" + map.get("roles"));
-            }
-        }else{
-            log.info("No ticket exist");
-        }
-    }
-
-    public Ticket getTicket(String id) {
-        log.info("Testing getTicket API");
-        Ticket ticket = restTemplate.getForObject(URI+"/tickets/" +id, Ticket.class);
-        log.info(ticket.toString());
-        return ticket;
-    }
-
     public String getTicketPdf(String id) throws IOException {
+        byte[] response = generateFilePdf(URI+"/tickets/" + id +".pdf", "C:\\ticket.pdf");
+        String responseText = generateText(response, 1);
+        return responseText;
+    }
+
+    public String getAllTicketsPdf() throws IOException {
+        byte[] response = generateFilePdf(URI+"/tickets.pdf", "C:\\tickets.pdf");
+        String responseText = generateText(response, 1);
+        return responseText;
+    }
+
+    public void bookTicket(Ticket ticket) {
+        log.info("Testing book ticket by unregistered User");
+        restTemplate.put(URI+"/tickets/book/" + ticket.getId().toString(), ticket);
+        log.info("Ticket has booked: " + ticket.toString());
+    }
+
+    private byte[] generateFilePdf(String url, String file) {
         ClientHttpRequestInterceptor acceptHeaderPdf = new AcceptHeaderHttpRequestInterceptor("application/pdf");
         restTemplate.setInterceptors(Lists.newArrayList(acceptHeaderPdf));
-        byte[] response = restTemplate.getForObject(URI+"/tickets/" +id, byte[].class);
+        byte[] response = restTemplate.getForObject(url, byte[].class);
+        try {
+            FileOutputStream fileOuputStream = new FileOutputStream(file);
+            fileOuputStream.write(response);
+            fileOuputStream.close();
+            log.info("File PDF is created.");
+        } catch (Exception e) {
+            log.info("File creating error: " + e.getMessage());
+        }
+        return response;
+    }
+
+    private String generateText(byte[] response, int page) throws IOException {
         PdfTextExtractor pdfTextExtractor = new PdfTextExtractor(new PdfReader(response));
-        String responseText = pdfTextExtractor.getTextFromPage(1);
+        String responseText = pdfTextExtractor.getTextFromPage(page) + "    [Page: " + page + "]";
         return responseText;
     }
 }

@@ -13,6 +13,13 @@
     <http-basic/>
     <logout logout-url="/logout"/>
     <intercept-url pattern="/login" access="permitAll"/>
+
+    <!-- Open access for RestTemplate to test REST WS -->
+    <intercept-url pattern="/users/*" access="permitAll"/>
+    <intercept-url pattern="/tickets.pdf" access="permitAll"/>
+    <intercept-url pattern="/tickets/*.pdf" access="permitAll"/>
+    <intercept-url pattern="/tickets/book/*" access="permitAll"/>
+
     <intercept-url pattern="/events/*/tickets" access="hasRole('BOOKING_MANAGER')"/>
     <intercept-url pattern="/**" access="hasRole('REGISTERED_USER')"/>
     <access-denied-handler error-page="/forbidden"/>

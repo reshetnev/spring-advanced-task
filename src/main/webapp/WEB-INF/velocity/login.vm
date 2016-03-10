@@ -40,7 +40,7 @@
 				In order to have access for REST WS you have to login.
 				In order to test REST WS Clients, only for example, Logger was added to 
 				UsersController.getUserById, TicketsController.getTicketById, 
-				TicketsController.getAllTickets.
+				TicketsController.getAllTickets, TicketsController.bookTicketProcessing.
 				Value URI (http://localhost:8080/cinema) was hardcoded in Rest Clients (RestTemplate)!
 			</h1>
 		</div>

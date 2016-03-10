@@ -78,12 +78,15 @@ public class BookingServiceImpl implements BookingService {
         if (ticket != null) {
             if (!ticket.getIsPurchased()) {
                 ticket.setIsPurchased(true);
-                if (user.getId() != null) {
+                if (user != null) {
                     ticket.setUserId(user.getId());
                 }
                 try {
                     ticketService.update(ticket);
-                    userAccountService.bookTicket(user, ticket);
+                    if (user != null) {
+                        ticket.setUserId(user.getId());
+                        userAccountService.bookTicket(user, ticket);
+                    }
                 } catch(Exception up) {
                     log.info("Rollback transaction.");
                     throw up;

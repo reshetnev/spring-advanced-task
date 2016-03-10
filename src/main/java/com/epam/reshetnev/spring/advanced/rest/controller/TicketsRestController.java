@@ -1,5 +1,6 @@
 package com.epam.reshetnev.spring.advanced.rest.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,8 +42,14 @@ public class TicketsRestController {
     public ResponseEntity<Ticket> bookTicket(HttpServletRequest request, @PathVariable("ticketId") String ticketId,
             @RequestBody Ticket ticket) throws Exception {
 
-        String email = request.getUserPrincipal().getName();
-        User user = userService.getByEmail(email);
+        log.info("Booking Ticket ... ");
+
+        Principal principal = request.getUserPrincipal();
+        User user = null;
+        if (principal != null) {
+            String email = principal.getName();
+            user = userService.getByEmail(email);
+        }
 
         Integer id = Integer.valueOf(ticketId);
         Ticket currentTicket  = ticketService.getById(id);

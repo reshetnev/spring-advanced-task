@@ -44,11 +44,16 @@ public class TicketsController {
     private TicketRestTestClient ticketRestTestClient;
 
     @RequestMapping(value = "/tickets", method = RequestMethod.GET)
-    public ModelAndView getAllTickets() {
+    public ModelAndView getAllTickets() throws IOException {
         ModelAndView model = new ModelAndView();
         List<Ticket> tickets = ticketService.getAll();
         model.addObject("tickets", tickets);
         model.setViewName("getAllTickets");
+
+        log.info("Testing REST WS! Calling TicketRestTestClient.getAllTicketsPdf ...");
+        String result = ticketRestTestClient.getAllTicketsPdf();
+        log.info("Test REST WS has finished. RestTemplate return result: " + result.toString());
+
         return model;
     }
 
@@ -59,7 +64,7 @@ public class TicketsController {
         model.addObject("ticket", ticket);
         model.setViewName("ticket");
 
-        log.info("Testing REST WS! Calling TicketRestTestClient.getTicket...");
+        log.info("Testing REST WS! Calling TicketRestTestClient.getTicketPdf ...");
         String result = ticketRestTestClient.getTicketPdf(ticketId);
         log.info("Test REST WS has finished. RestTemplate return result: " + result.toString());
 
@@ -82,7 +87,15 @@ public class TicketsController {
         Event event = eventService.getByName(bookForm.getName());
         Integer seat = bookForm.getSeat();
         Ticket ticket = ticketService.getByEventAndSeat(event, seat);
+
+        log.info("Testing REST WS! Calling TicketRestTestClient.bookTicket ...");
+        ticketRestTestClient.bookTicket(ticket);
+        log.info("Testing REST WS! Calling TicketRestTestClient.getTicketPdf ...");
+        String result = ticketRestTestClient.getTicketPdf(ticket.getId().toString());
+        log.info("Test REST WS has finished. RestTemplate return result: " + result.toString());
+
         bookingService.bookTicket(user, ticket);
+
         return "redirect:/";
     }
 
