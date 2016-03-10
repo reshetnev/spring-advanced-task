@@ -19,6 +19,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/swagger-ui.html").addResourceLocations("/swagger-ui.html");
         //Swagger Style and JavaScript for UI
         registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
+        //Swagger Images for UI
+        registry.addResourceHandler("/images/**").addResourceLocations("/images/");
 
     }
 
