@@ -2,6 +2,7 @@ package com.epam.reshetnev.spring.advanced.rest.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,8 @@ import com.epam.reshetnev.spring.core.service.UserService;
 @RestController
 public class UsersRestController {
 
+    private static final Logger log = Logger.getLogger(UsersRestController.class);
+
     @Autowired
     private UserService userService;
 
@@ -37,6 +40,7 @@ public class UsersRestController {
     @ResponseBody
     @RequestMapping(value = "/users/{userId}", method = RequestMethod.GET, headers="accept=application/json")
     public ResponseEntity<User> getById(@PathVariable String userId) {
+        log.info("Getting User with id: " + userId + " ...");
         User user = userService.getById(Integer.parseInt(userId));
         if (user == null) {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);

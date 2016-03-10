@@ -74,6 +74,7 @@ public class TicketsRestController {
     @ResponseBody
     @RequestMapping(value = "/tickets", method = RequestMethod.GET, headers="accept=application/pdf")
     public ResponseEntity<List<Ticket>> getAllTicketsPdf() {
+        log.info("Getting All Tickets ...");
         List<Ticket> tickets = ticketService.getAll();
         if(tickets.isEmpty()){
             return new ResponseEntity<List<Ticket>>(HttpStatus.NO_CONTENT);
@@ -94,6 +95,7 @@ public class TicketsRestController {
     @ResponseBody
     @RequestMapping(value = "/tickets/{ticketId}", method = RequestMethod.GET, headers="accept=application/pdf")
     public ResponseEntity<List<Ticket>> getTicketByIdPdf(@PathVariable String ticketId) {
+        log.info("Getting Ticket with id: " + ticketId + " ...");
         Ticket ticket = ticketService.getById(Integer.parseInt(ticketId));
         if (ticket == null) {
             return new ResponseEntity<List<Ticket>>(HttpStatus.NOT_FOUND);

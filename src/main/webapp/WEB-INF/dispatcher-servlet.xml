@@ -19,6 +19,7 @@
                 <property name="supportedMediaTypes" value="application/pdf"/>
             </bean-->
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            <!--bean class="org.springframework.messaging.support.converter.ByteArrayMessageConverter"/-->
         </mvc:message-converters>
     </mvc:annotation-driven>
 

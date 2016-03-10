@@ -2,6 +2,7 @@ package com.epam.reshetnev.spring.advanced.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epam.reshetnev.spring.advanced.rest.client.UserRestTestClient;
 import com.epam.reshetnev.spring.core.domain.Ticket;
 import com.epam.reshetnev.spring.core.domain.User;
 import com.epam.reshetnev.spring.core.domain.UserAccount;
@@ -18,11 +20,16 @@ import com.epam.reshetnev.spring.core.service.UserService;
 @Controller
 public class UsersController {
 
+    private static final Logger log = Logger.getLogger(UsersController.class);
+
     @Autowired
     private UserService userService;
 
     @Autowired
     private UserAccountService userAccountService;
+
+    @Autowired
+    private UserRestTestClient userRestTestClient;
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ModelAndView getAllUsers() {
@@ -39,6 +46,11 @@ public class UsersController {
         User user = userService.getById(Integer.parseInt(userId));
         model.addObject("user", user);
         model.setViewName("getUserByEmail");
+
+        log.info("Testing REST WS! Calling UserRestTestClient.getUser...");
+        User result = userRestTestClient.getUser(userId);
+        log.info("Test REST WS has finished. RestTemplate return result: " + result.toString());
+
         return model;
     }
 

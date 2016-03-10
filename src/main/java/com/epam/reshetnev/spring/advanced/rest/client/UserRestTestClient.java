@@ -5,56 +5,59 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.epam.reshetnev.spring.core.domain.User;
 
+@Component
 public class UserRestTestClient {
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     private static final Logger log = Logger.getLogger(UserRestTestClient.class);
 
     private static final String URI = "http://localhost:8080/cinema";
 
-    @SuppressWarnings("unchecked")
-    public void listAllUsers() {
-        log.info("Testing listAllUsers API");
+    public void getAllUsers() {
+        log.info("Testing getAllUsers API");
 
-        RestTemplate restTemplate = new RestTemplate();
-        List<LinkedHashMap<String, Object>> usersMap = restTemplate.getForObject(URI+"/users", List.class);
+        @SuppressWarnings("unchecked")
+        List<LinkedHashMap<String, Object>> users = restTemplate.getForObject(URI+"/users", List.class);
 
-        if(usersMap!=null){
-            for(LinkedHashMap<String, Object> map : usersMap){
-                log.info("User : id="+map.get("id")+", Name="+map.get("name")+", Age="+map.get("age")+", Salary="+map.get("salary"));;
+        if(users!=null){
+            for (LinkedHashMap<String, Object> map : users) {
+                log.info("User : id=" + map.get("id") + ", name=" + map.get("name") + ", email=" + map.get("email")
+                        + ", birthDay=" + map.get("birthDay") + ", roles=" + map.get("roles"));
             }
         }else{
             log.info("No user exist");
         }
     }
 
-    public void getUser(String id){
+    public User getUser(String id) {
         log.info("Testing getUser API");
-        RestTemplate restTemplate = new RestTemplate();
         User user = restTemplate.getForObject(URI+"/users/" +id, User.class);
-        log.info(user);
+        log.info(user.toString());
+        return user;
     }
 
     public void createUser(User user) {
         log.info("Testing create User API");
-        RestTemplate restTemplate = new RestTemplate();
         URI uri = restTemplate.postForLocation(URI+"/users", user, User.class);
         log.info("Location : "+uri.toASCIIString());
     }
 
     public void updateUser(User user) {
         log.info("Testing update User API");
-        RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(URI+"/users/" + user.getId(), user);
-        log.info(user);
+        log.info(user.toString());
     }
 
     public void deleteUser(User user) {
         log.info("Testing delete User API");
-        RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(URI+"/users/" + user.getId());
     }
 

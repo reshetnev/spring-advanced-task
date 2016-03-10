@@ -1,0 +1,9 @@
+<html>
+	<head><title>Cinema</title></head>
+	<body>
+		<h2>Get Ticket:</h2>
+		<ul>
+			<li>${ticket}</li>
+		</ul>
+	</body>
+</html>
