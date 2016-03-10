@@ -15,6 +15,33 @@
             <button class="btn btn-primary" type="submit">Upload</button>
           </div>
       </form>
+      <hr>
+      <hr>
+		<div>
+			<h1>REST WS:</h1>
+		</div>
+		<div>
+			<a href="${rc.contextPath}/swagger-ui.html">Swagger API Docs</a>
+			<br>
+			<a href="${rc.contextPath}/v2/api-docs?group=cinema">Swagger JSON</a>
+			<br>
+			<a href="${rc.contextPath}/users/2.json">GET:/users/2</a>
+			<br>
+			<a href="${rc.contextPath}/users/2/tickets.json">GET:/users/2/tickets</a>
+			<br>
+			<a href="${rc.contextPath}/events.json">GET:/events</a>
+			<br>
+			<a href="${rc.contextPath}/events/1.json">GET:/events/1</a>
+			<br>
+			<a href="${rc.contextPath}/tickets.pdf">GET:/tickets.pdf</a>
+			<br>
+			<a href="${rc.contextPath}/tickets/2.pdf">GET:/tickets/2.pdf</a>
+			<br>
+		</div>
+      <hr>
+		<div>
+			<h1>MVC:</h1>
+		</div>
 		<div>
 			<a href="${rc.contextPath}/accounts">GET:/accounts</a>
 			<br>
@@ -41,6 +68,7 @@
 			<a href="${rc.contextPath}/tickets/book">POST:/tickets/book</a>
 			<br>
 		</div>
+		<hr>
 		<a href="${rc.contextPath}/logout"><h1>LOGOUT</h1></a>
 	</body>
 </html>

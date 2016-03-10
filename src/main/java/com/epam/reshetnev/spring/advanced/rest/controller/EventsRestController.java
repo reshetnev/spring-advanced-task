@@ -14,89 +14,90 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.epam.reshetnev.spring.core.domain.Event;
 import com.epam.reshetnev.spring.core.domain.Ticket;
-import com.epam.reshetnev.spring.core.domain.User;
-import com.epam.reshetnev.spring.core.service.UserService;
+import com.epam.reshetnev.spring.core.service.EventService;
 
 @RestController
 public class EventsRestController {
 
     @Autowired
-    private UserService userService;
+    private EventService eventService;
 
     @ResponseBody
-    @RequestMapping(value = "/users", method = RequestMethod.GET, headers="accept=application/json")
-    public ResponseEntity<List<User>> getAll() {
-        List<User> users = userService.getAll();
-        if(users.isEmpty()){
-            return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);
+    @RequestMapping(value = "/events", method = RequestMethod.GET, headers="accept=application/json")
+    public ResponseEntity<List<Event>> getAll() {
+        List<Event> events = eventService.getAll();
+        if(events.isEmpty()){
+            return new ResponseEntity<List<Event>>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+        return new ResponseEntity<List<Event>>(events, HttpStatus.OK);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/users/{userId}", method = RequestMethod.GET, headers="accept=application/json")
-    public ResponseEntity<User> getById(@PathVariable String userId) {
-        User user = userService.getById(Integer.parseInt(userId));
-        if (user == null) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+    @RequestMapping(value = "/events/{eventId}", method = RequestMethod.GET, headers="accept=application/json")
+    public ResponseEntity<Event> getById(@PathVariable String eventId) {
+        Event event = eventService.getById(Integer.parseInt(eventId));
+        if (event == null) {
+            return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        return new ResponseEntity<Event>(event, HttpStatus.OK);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/users/{userId}/tickets", method = RequestMethod.GET, headers="accept=application/json")
-    public ResponseEntity<List<Ticket>> getBookedTickets(@PathVariable String userId) {
-        User user = userService.getById(Integer.parseInt(userId));
-        List<Ticket> tickets = userService.getBookedTickets(user);
+    @RequestMapping(value = "/events/{eventId}/tickets", method = RequestMethod.GET, headers="accept=application/json")
+    public ResponseEntity<List<Ticket>> getBookedTickets(@PathVariable String eventId) {
+        Event event = eventService.getById(Integer.parseInt(eventId));
+        List<Ticket> tickets = eventService.getBookedTickets(event);
         if(tickets.isEmpty()){
             return new ResponseEntity<List<Ticket>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<Ticket>>(tickets, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public ResponseEntity<Void> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+    @RequestMapping(value = "/events", method = RequestMethod.POST)
+    public ResponseEntity<Void> createEvent(@RequestBody Event event, UriComponentsBuilder ucBuilder) {
 
-        if (userService.getById(user.getId()) != null) {
+        if (eventService.getById(event.getId()) != null) {
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
 
-        userService.save(user);
+        eventService.save(event);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/users/{id}").buildAndExpand(user.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/events/{id}").buildAndExpand(event.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<User> updateUser(@PathVariable("id") String id, @RequestBody User user) {
+    @RequestMapping(value = "/events/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Event> updateEvent(@PathVariable("id") String id, @RequestBody Event event) {
 
-        User currentUser = userService.getById(Integer.valueOf(id));
+        Event currentEvent = eventService.getById(Integer.valueOf(id));
 
-        if (currentUser==null) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        if (currentEvent==null) {
+            return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
         }
 
-        currentUser.setName(user.getName());
-        currentUser.setEmail(user.getEmail());
-        currentUser.setBirthDay(user.getBirthDay());
-        currentUser.setPassword(user.getPassword());
-        currentUser.setRoles(user.getRoles());
+        currentEvent.setName(event.getName());
+        currentEvent.setDate(event.getDate());
+        currentEvent.setTime(event.getTime());
+        currentEvent.setBasePrice(event.getBasePrice());
+        currentEvent.setRating(event.getRating());
+        currentEvent.setAuditorium(event.getAuditorium());
 
-        userService.update(currentUser);
-        return new ResponseEntity<User>(currentUser, HttpStatus.OK);
+        eventService.update(currentEvent);
+        return new ResponseEntity<Event>(currentEvent, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<User> deleteUser(@PathVariable("id") String id) {
+    @RequestMapping(value = "/events/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Event> deleteEvent(@PathVariable("id") String id) {
 
-        User user = userService.getById(Integer.valueOf(id));
-        if (user == null) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        Event event = eventService.getById(Integer.valueOf(id));
+        if (event == null) {
+            return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
         }
 
-        userService.delete(user);
-        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+        eventService.delete(event);
+        return new ResponseEntity<Event>(HttpStatus.NO_CONTENT);
     }
 }

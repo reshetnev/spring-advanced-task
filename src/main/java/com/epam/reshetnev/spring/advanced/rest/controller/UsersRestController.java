@@ -88,7 +88,7 @@ public class UsersRestController {
         return new ResponseEntity<User>(currentUser, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteUser(@PathVariable("id") String id) {
 
         User user = userService.getById(Integer.valueOf(id));
