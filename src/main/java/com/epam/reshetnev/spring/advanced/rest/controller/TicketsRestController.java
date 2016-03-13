@@ -58,7 +58,7 @@ public class TicketsRestController {
             return new ResponseEntity<Ticket>(HttpStatus.NOT_FOUND);
         }
 
-        if (id != ticket.getId()) {
+        if (!ticket.getId().equals(id)) {
             log.info("ticketId: " + ticketId + " must be equal id: " + ticket.getId() + " of ticket in request body");
             return new ResponseEntity<Ticket>(HttpStatus.CONFLICT);
         }
